@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="11.5">
+
+    <!-- blank -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3" />
+
+    <!-- speak type -->
+    <TextView
+        android:id="@+id/tv_speak_type"
+        android:layout_width="70dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.5"
+        android:background="#717171"
+        android:gravity="center"
+        android:text="@string/activity_speech_ready"
+        android:textColor="#ffffff" />
+
+
+    <!-- speaker -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.5"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/activity_speech_speaker"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <!-- speaker name(spinner) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:gravity="center">
+
+        <Spinner
+            android:id="@+id/spinner_speech_speaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <!-- speaker image -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/speaker"
+            android:backgroundTint="@color/gray" />
+    </LinearLayout>
+
+    <!-- speech box -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.5"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/speech_box"
+            android:backgroundTint="#717171"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="35dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+                <TextView
+                    android:id="@+id/tv_voice_recog_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp" />
+
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+
+                <Button
+                    android:id="@+id/bt_show_log"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:text="로그"
+                    android:textSize="12dp" />
+
+
+                <!-- Should not be shown until server is set -->
+                <Button
+                    android:id="@+id/bt_show_status"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:text="진행 상황"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2" />
+
+    <!-- past speech -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="1.6"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/activity_speech_formal"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_speech_formal_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/round_shape"
+            android:backgroundTint="@color/darkerGray">
+
+            <TextView
+                android:id="@+id/tv_speech_formal_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25" />
+
+    <!-- speech type -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.6"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7">
+
+            <RadioGroup
+                android:id="@+id/rg_speech_type_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal"
+                android:weightSum="3.4">
+
+                <RadioButton
+                    android:id="@+id/rb_speech_type_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/LightGray"
+                    android:button="@android:color/transparent"
+                    android:text="@string/dialog_speech_opinion"
+                    android:textAlignment="center"
+                    android:textSize="13dp"></RadioButton>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <RadioButton
+                    android:id="@+id/rb_speech_type_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/LightGray"
+                    android:button="@android:color/transparent"
+                    android:text="@string/dialog_speech_ask"
+                    android:textAlignment="center"
+                    android:textSize="13dp"></RadioButton>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <RadioButton
+                    android:id="@+id/rb_speech_type_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/LightGray"
+                    android:button="@android:color/transparent"
+                    android:text="@string/dialog_speech_answer"
+                    android:textAlignment="center"
+                    android:textSize="13dp"></RadioButton>
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7">
+
+            <RadioGroup
+                android:id="@+id/rg_speech_type_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal"
+                android:weightSum="3.4">
+
+                <RadioButton
+                    android:id="@+id/rb_speech_type_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/LightGray"
+                    android:button="@android:color/transparent"
+                    android:text="@string/dialog_speech_refutation"
+                    android:textAlignment="center"
+                    android:textSize="13dp"></RadioButton>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <RadioButton
+                    android:id="@+id/rb_speech_type_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/LightGray"
+                    android:button="@android:color/transparent"
+                    android:text="@string/dialog_speech_additional"
+                    android:textAlignment="center"
+                    android:textSize="13dp"></RadioButton>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <RadioButton
+                    android:id="@+id/rb_speech_type_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/LightGray"
+                    android:button="@android:color/transparent"
+                    android:text="@string/dialog_speech_etc"
+                    android:textAlignment="center"
+                    android:textSize="13dp"></RadioButton>
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2" />
+
+    <!-- meeting participants -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="0.7"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/bt_start_voice_recog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_shape"
+            android:backgroundTint="@color/cleanBlue"
+            android:text="@string/activity_speech_want"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+</LinearLayout>

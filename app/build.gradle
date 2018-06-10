@@ -1,0 +1,114 @@
+apply plugin: 'com.android.application'
+apply plugin: "com.google.protobuf"
+
+ext {
+    supportLibraryVersion = '25.4.0'
+    grpcVersion = '1.4.0'
+}
+
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "org.androidtown.hyme"
+        minSdkVersion 23
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.2'
+    }
+}
+
+
+
+
+//add for voice recognition
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.3.0'
+    }
+    plugins {
+        javalite {
+            artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0"
+        }
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.plugins {
+                javalite {}
+                grpc {
+                    // Options added to --grpc_out
+                    option 'lite'
+                }
+            }
+        }
+    }
+}
+
+
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+
+
+
+
+
+
+
+    // gRPC
+    implementation "io.grpc:grpc-okhttp:$grpcVersion"
+    implementation "io.grpc:grpc-protobuf-lite:$grpcVersion"
+    implementation "io.grpc:grpc-stub:$grpcVersion"
+    implementation 'javax.annotation:javax.annotation-api:1.2'
+    protobuf 'com.google.protobuf:protobuf-java:3.3.1'
+
+
+    /* The code that causes error(SHOULD BE FIXED! Only works under ver 2.3)
+       cause of error looks like there's some confliction in using same type name */
+    //implementation group: 'com.google.api.grpc', name: 'grpc-google-cloud-speech-v1', version: '0.1.13'
+
+    // OAuth2 for Google API
+    implementation('com.google.auth:google-auth-library-oauth2-http:0.7.0') {
+        exclude module: 'httpclient'
+    }
+
+    // Tests
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
+
+}
+
+task copySecretKey(type: Copy) {
+    def File secretKey = file "$System.env.GOOGLE_APPLICATION_CREDENTIALS"
+    from secretKey.getParent()
+    include secretKey.getName()
+    into 'src/main/res/raw'
+    rename secretKey.getName(), "voicerecog1dd8708f03ae.json"
+}
+preBuild.dependsOn(copySecretKey)

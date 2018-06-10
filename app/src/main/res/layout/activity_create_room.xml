@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+
+    <!-- Empty -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"></LinearLayout>
+
+    <!-- title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_create_title"
+            android:textColor="@color/darkBlue"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <!-- meeting room name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:weightSum="8">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/activity_create_name"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/ed_create_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/title"
+            android:layout_weight="6"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <!-- number of participants -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:weightSum="8">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.8"
+            android:text="@string/activity_create_participant_num"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_create_participant_number"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="15dp"/>
+
+
+    </LinearLayout>
+
+    <!-- participant list -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/activity_create_participant_list"
+            android:textSize="15dp" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.6"
+            android:id="@+id/ed_create_participant"
+            android:textSize="15dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/bt_create_participant_add"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:text="@string/activity_create_participant_add"
+                android:textSize="13dp"
+                android:background="@drawable/round_shape"
+                android:backgroundTint="@color/LightGray"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/bt_create_participant_search"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:text="@string/activity_create_participant_search"
+                android:textSize="13dp"
+                android:background="@drawable/round_shape"
+                android:backgroundTint="@color/LightGray"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- listview -->
+    <ListView
+        android:id="@+id/lv_create_participant_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"/>
+
+    <!-- Empty -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"></LinearLayout>
+
+    <!-- set time -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/activity_create_time"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="end">
+
+            <!-- will update soon! -->s
+            <CheckBox
+                android:id="@+id/cb_create_alarm"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/activity_create_alarm"
+                android:visibility="invisible"/>
+
+            <CheckBox
+                android:id="@+id/cb_create_current_time"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="@string/activity_create_current_time"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- set time -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:weightSum="4">
+
+        <!-- need timepicker -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/activity_create_am"
+                android:id="@+id/tv_create_room_ampm"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="25dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/activity_create_time_def"
+                android:id="@+id/tv_create_room_hour"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:background="@drawable/round_shape"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/activity_create_hour"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="25dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="00"
+                android:id="@+id/tv_create_room_minute"
+                android:clickable="true"
+                android:background="@drawable/round_shape"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/activity_create_minute"/>
+        </LinearLayout>
+
+
+        <!-- need date picker -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="38dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/activity_create_year_def"
+                android:id="@+id/tv_create_room_year"
+                android:clickable="true"
+                android:background="@drawable/round_shape"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/activity_create_year"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="25dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/activity_create_time_def"
+                android:id="@+id/tv_create_room_month"
+                android:clickable="true"
+                android:background="@drawable/round_shape"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/activity_create_month"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="25dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/activity_create_time_def"
+                android:id="@+id/tv_create_room_day"
+                android:clickable="true"
+                android:background="@drawable/round_shape"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/activity_create_day"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- Empty -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="5dp"
+        android:gravity="end">
+
+        <!-- register -->
+        <Button
+            android:id="@+id/bt_create_confirm"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_shape"
+            android:backgroundTint="@color/lightBlue"
+            android:text="@string/activity_create_confirm"
+            android:textColor="@color/cleanBlue" />
+
+        <Space
+            android:layout_width="15dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/bt_create_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_shape"
+            android:backgroundTint="@color/cleanBlue"
+            android:text="@string/activity_create_cancel"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+    <!-- Empty -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"></LinearLayout>
+
+
+</LinearLayout>
